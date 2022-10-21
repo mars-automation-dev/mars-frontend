@@ -12,7 +12,7 @@ const Banner = () => {
         <Box sx={styles.contentWrapper}>
           <SectionHeading
             sx={styles.heading}
-            title="Creativity starts with viewing the whole world differently"
+            title="A criatividade começa com a visão do mundo inteiro de forma diferente"
             description="A service agency with customer satisfaction"
           />
           <Box as="figure" sx={styles.illustration}>
