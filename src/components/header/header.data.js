@@ -1,7 +1,7 @@
 export default [
   {
-    path: 'home',
-    label: 'Home',
+    path: 'Início',
+    label: 'Início',
   },
   {
     path: 'services',
@@ -14,10 +14,6 @@ export default [
   {
     path: 'why-us',
     label: 'Why Us',
-  },
-  {
-    path: 'blog',
-    label: 'Blog',
   },
   {
     path: 'login',

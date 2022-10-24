@@ -79,9 +79,6 @@ const WhyUs = () => {
                     </Box>
                   ))}
                 </Box>
-                <Box sx={styles.learnMore}>
-                  <LearnMore path={item.moreLink} label="Explore more" />
-                </Box>
               </Box>
               <Box sx={styles.illustration}>
                 <Image src={item.image} alt="illustration" />

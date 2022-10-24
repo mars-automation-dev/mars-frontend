@@ -12,20 +12,20 @@ const data = [
   {
     id: 1,
     icon: icon1,
-    title: 'Marketing & advertising',
-    description: `Get your info tests delivered at home collect a sample from the your progress tests.`,
+    title: 'Automação de Processos',
+    description: `Potencialize a criação de workflows otimizando seu tempo.`,
   },
   {
     id: 3,
     icon: icon2,
-    title: 'Ultimate development',
-    description: `Get your info tests delivered at home collect a sample from the your progress tests.`,
+    title: 'Melhoria Contínua',
+    description: `Atinja, ininterruptamente, resultados cada vez melhores.`,
   },
   {
     id: 4,
     icon: icon3,
-    title: 'Business Enterprise',
-    description: `Get your info tests delivered at home collect a sample from the your progress tests.`,
+    title: 'Gestão de Documentos',
+    description: `Pare de usar papel e otimize o gerenciamento das informações.`,
   },
 ];
 
@@ -35,8 +35,8 @@ const Services = () => {
       <Container>
         <SectionHeading
           sx={styles.heading}
-          title="Grow your startup with our Service"
-          description="Build an incredible workplace and grow your business with Gusto’s all-in-one platform with amazing contents."
+          title="Crie aplicativos e fluxos de trabalho corporativos"
+          description="Nossa consultoria é especializada em maximizar seus resultados de negócio com soluções em  BPMS."
         />
         <Box sx={styles.contentWrapper}>
           {data?.map((item) => (
