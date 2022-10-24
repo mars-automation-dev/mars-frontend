@@ -75,12 +75,10 @@ const styles = {
   navList: {
     display: ['flex'],
     listStyle: 'none',
-    // marginLeft: 'auto',
-    flexGrow: 1,
-    p: 0,
-    'li:last-child': {
-      ml: ['auto'],
-    },
+    marginLeft: 'auto',
+
+
+    
     '.nav-item': {
       cursor: 'pointer',
       fontWeight: 400,

@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SectionHeading from 'components/section-heading';
 import TeamMember from 'components/cards/team-member';
 
-import avatar1 from 'assets/images/team/member1.png';
+import mauricioPhoto from 'assets/images/team/mauricio.jpg';
 import arrowRight from 'assets/images/icons/arrow-right.png';
 
 SwiperCore.use([Navigation, Pagination]);
@@ -15,21 +15,17 @@ SwiperCore.use([Navigation, Pagination]);
 const data = [
   {
     id: 1,
-    avatar: avatar1,
+    avatar: mauricioPhoto,
     name: 'Mauricio Mars',
-    designation: 'Product Designer',
+    designation: 'BPM Developer',
     socialLinks: [
       {
-        name: 'twitter',
-        link: 'http://twitter.com',
+        name: 'linkedin',
+        link: 'https://www.linkedin.com/in/mauricio-mars',
       },
       {
         name: 'github',
-        link: 'http://github.com',
-      },
-      {
-        name: 'dribbble',
-        link: 'http://dribbble.com',
+        link: 'https://github.com/MarsMauricio',
       },
     ],
   },

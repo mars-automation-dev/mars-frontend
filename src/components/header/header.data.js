@@ -1,22 +1,19 @@
 export default [
   {
-    path: 'Início',
+    path: 'home',
     label: 'Início',
   },
   {
     path: 'services',
-    label: 'Services',
+    label: 'Serviços',
   },
   {
     path: 'team',
-    label: 'Team',
+    label: 'Time',
   },
   {
     path: 'why-us',
-    label: 'Why Us',
+    label: 'Sobre nós',
   },
-  {
-    path: 'login',
-    label: 'Login',
-  },
+
 ];
