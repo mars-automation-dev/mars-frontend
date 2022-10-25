@@ -75,10 +75,7 @@ const styles = {
   navList: {
     display: ['flex'],
     listStyle: 'none',
-    marginLeft: 'auto',
-
-
-    
+    marginLeft: '10%',
     '.nav-item': {
       cursor: 'pointer',
       fontWeight: 400,

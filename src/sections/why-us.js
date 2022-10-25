@@ -10,46 +10,47 @@ import tabImage1 from 'assets/images/tab-illustration-1.png';
 const data = [
   {
     id: 1,
-    tabTitle: 'Why you choose our service?',
-    title: `We will turn your idea in the successful business model framework`,
-    description: `Get your tests delivered at let home collect sample from the victory of the managements that supplies best design system guidelines ever.`,
+    tabTitle: 'Por que escolher nosso serviço?',
+    title: `Nós transformaremos a maturidade de gestão por processos através da sua necessidade de automatização`,
+    description: `Através do BPMS low-code e a nossa equipe técnica especializada, te daremos total suporte para adquirir autonomia e possibilitar a melhoria contínua interna dos aplicativos .`,
     moreLink: '#explore-more',
     image: tabImage1,
     list: [
-      'Medical and vision',
-      'Life insurance',
-      'HSAs and FSAs',
-      'Commuter benefits',
+      'Melhoria Contínua',
+      'Redução de Custo',
+      'Indicadores',
+      'Integrações',
     ],
-  },
-  {
-    id: 2,
-    tabTitle: 'What’s our business promise?',
-    title: `We will turn your idea in the successful business model framework`,
-    description: `Get your tests delivered at let home collect sample from the victory of the managements that supplies best design system guidelines ever.`,
-    moreLink: '#explore-more',
-    image: tabImage1,
-    list: [
-      'Medical and vision',
-      'Life insurance',
-      'HSAs and FSAs',
-      'Commuter benefits',
-    ],
-  },
-  {
-    id: 3,
-    tabTitle: 'What’s our role model plan?',
-    title: `We will turn your idea in the successful business model framework`,
-    description: `Get your tests delivered at let home collect sample from the victory of the managements that supplies best design system guidelines ever.`,
-    moreLink: '#explore-more',
-    image: tabImage1,
-    list: [
-      'Medical and vision',
-      'Life insurance',
-      'HSAs and FSAs',
-      'Commuter benefits',
-    ],
-  },
+  }
+  //,
+  // {
+  //   id: 2,
+  //   tabTitle: 'What’s our business promise?',
+  //   title: `We will turn your idea in the successful business model framework`,
+  //   description: `Get your tests delivered at let home collect sample from the victory of the managements that supplies best design system guidelines ever.`,
+  //   moreLink: '#explore-more',
+  //   image: tabImage1,
+  //   list: [
+  //     'Medical and vision',
+  //     'Life insurance',
+  //     'HSAs and FSAs',
+  //     'Commuter benefits',
+  //   ],
+  // },
+  // {
+  //   id: 3,
+  //   tabTitle: 'What’s our role model plan?',
+  //   title: `We will turn your idea in the successful business model framework`,
+  //   description: `Get your tests delivered at let home collect sample from the victory of the managements that supplies best design system guidelines ever.`,
+  //   moreLink: '#explore-more',
+  //   image: tabImage1,
+  //   list: [
+  //     'Medical and vision',
+  //     'Life insurance',
+  //     'HSAs and FSAs',
+  //     'Commuter benefits',
+  //   ],
+  // },
 ];
 
 const WhyUs = () => {

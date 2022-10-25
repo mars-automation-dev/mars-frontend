@@ -21,11 +21,15 @@ const data = [
     socialLinks: [
       {
         name: 'linkedin',
-        link: 'https://www.linkedin.com/in/mauricio-mars',
+        link: 'https://www.linkedin.com/in/mauricio-mars-627b3a1ab/',
       },
       {
         name: 'github',
         link: 'https://github.com/MarsMauricio',
+      },
+      {
+        name: 'whatsapp',
+        link: 'https://wa.me/21982434974?text=Tenho%20interesse%20de%20agendar%20uma%20call',
       },
     ],
   },

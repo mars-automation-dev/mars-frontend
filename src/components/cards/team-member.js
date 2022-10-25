@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx, Flex, Box, Image, Text, Heading, Link } from 'theme-ui';
-import { FaTwitter, FaGithub, FaDribbble, FaLinkedin } from 'react-icons/fa';
+import { FaTwitter, FaGithub, FaDribbble, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 
 const TeamMember = ({ member }) => {
   return (
@@ -14,7 +14,7 @@ const TeamMember = ({ member }) => {
         <Text as="p">{member?.designation}</Text>
         <Box sx={styles.socialLinks}>
           {member?.socialLinks?.map((social, index) => (
-            <Link href={social?.link} key={index}>
+            <Link href={social?.link} key={index} target='_blank'>
               {social?.name === 'twitter' && (
                 <FaTwitter size="18px" color="#55ACEE" />
               )}
@@ -30,6 +30,9 @@ const TeamMember = ({ member }) => {
               )}
               {social?.name === 'linkedin' && (
                 <FaLinkedin size="18px" color="#0e76a8" />
+              )}
+              {social?.name === 'whatsapp' && (
+                <FaWhatsapp size="18px" color="#00BB2D" />
               )}
             
             </Link>
