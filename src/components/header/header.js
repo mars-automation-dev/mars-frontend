@@ -71,7 +71,6 @@ const styles = {
     alignItems: 'center',
     flexGrow: 1,
     // justifyContent: 'center',
-    //a
   },
   navList: {
     display: ['flex'],
