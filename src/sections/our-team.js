@@ -29,7 +29,7 @@ const data = [
       },
       {
         name: 'whatsapp',
-        link: 'https://wa.me/21982434974?text=Tenho%20interesse%20de%20agendar%20uma%20call',
+        link: 'https://wa.me/5521971591996?text=Tenho%20interesse%20de%20agendar%20uma%20call',
       },
     ],
   },
