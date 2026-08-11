@@ -1,0 +1,226 @@
+/* HP-12C PWA — interface responsiva. Sem imagens: visor em CSS puro. */
+
+:root {
+  --body-bg: #0c0d10;
+  --case: #2a2d33;
+  --case-2: #1c1e23;
+  --key-top: #3b3e45;
+  --key-bot: #24262b;
+  --key-txt: #f4f5f7;
+  --f-color: #f2c14e;   /* amarelo (prefixo f) */
+  --g-color: #5cc7f5;   /* azul claro (prefixo g) */
+  --lcd-bg: #12160f;
+  --lcd-on: #ffc24a;    /* âmbar */
+  --lcd-glow: rgba(255, 194, 74, 0.55);
+  --ann: #d8b878;
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; margin: 0; }
+html { background: var(--body-bg); }
+
+body {
+  background: radial-gradient(120% 120% at 50% 0%, #16181d 0%, var(--body-bg) 70%);
+  color: var(--key-txt);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:
+    calc(env(safe-area-inset-top) + 8px)
+    calc(env(safe-area-inset-right) + 8px)
+    calc(env(safe-area-inset-bottom) + 8px)
+    calc(env(safe-area-inset-left) + 8px);
+  overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Unidade base: menor entre largura, altura e um teto (evita deformar no iPad). */
+.calc {
+  --u: min(
+    calc((100vw - env(safe-area-inset-left) - env(safe-area-inset-right) - 16px) / 10.6),
+    calc((100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 16px) / 8.0),
+    52px
+  );
+  width: calc(var(--u) * 10.6);
+  aspect-ratio: 10.6 / 8.0;
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--u) * 0.35);
+  gap: calc(var(--u) * 0.22);
+  background: linear-gradient(180deg, var(--case) 0%, var(--case-2) 100%);
+  border-radius: calc(var(--u) * 0.55);
+  box-shadow:
+    0 calc(var(--u) * 0.5) calc(var(--u) * 1.2) rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* ---------------- Visor ---------------- */
+.lcd-frame {
+  background: linear-gradient(180deg, #171c12, var(--lcd-bg));
+  border-radius: calc(var(--u) * 0.2);
+  padding: calc(var(--u) * 0.12) calc(var(--u) * 0.3) calc(var(--u) * 0.18);
+  box-shadow: inset 0 calc(var(--u) * 0.06) calc(var(--u) * 0.18) rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+.annunciators {
+  display: flex;
+  gap: calc(var(--u) * 0.5);
+  height: calc(var(--u) * 0.3);
+  font-size: calc(var(--u) * 0.2);
+  letter-spacing: 0.06em;
+  color: var(--ann);
+  opacity: 0.9;
+}
+.ann-mod { min-width: calc(var(--u) * 1.6); }
+.ann { white-space: nowrap; }
+
+.lcd {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: calc(var(--u) * 1.05);
+  transform: skewX(-5deg);
+  padding-right: calc(var(--u) * 0.2);
+}
+
+.digit {
+  --w: calc(var(--u) * 0.6);
+  --h: calc(var(--u) * 1.0);
+  --t: calc(var(--u) * 0.1);
+  position: relative;
+  width: var(--w);
+  height: var(--h);
+  margin-left: calc(var(--u) * 0.09);
+}
+
+.seg {
+  position: absolute;
+  visibility: hidden; /* o motor alterna para "visible" */
+  background: var(--lcd-on);
+  box-shadow: 0 0 calc(var(--u) * 0.07) var(--lcd-glow);
+  border-radius: calc(var(--u) * 0.02);
+}
+
+/* Geometria decodificada do lcdmap do motor:
+   a=topo b=sup.esq c=sup.dir d=meio e=inf.esq f=inf.dir g=base p=ponto t=vírgula */
+.seg-a { left: var(--t); top: 0; width: calc(var(--w) - 2 * var(--t)); height: var(--t); }
+.seg-d { left: var(--t); top: calc((var(--h) - var(--t)) / 2); width: calc(var(--w) - 2 * var(--t)); height: var(--t); }
+.seg-g { left: var(--t); top: calc(var(--h) - var(--t)); width: calc(var(--w) - 2 * var(--t)); height: var(--t); }
+.seg-b { left: 0; top: var(--t); width: var(--t); height: calc((var(--h) - 3 * var(--t)) / 2); }
+.seg-c { right: 0; top: var(--t); width: var(--t); height: calc((var(--h) - 3 * var(--t)) / 2); }
+.seg-e { left: 0; top: calc((var(--h) + var(--t)) / 2); width: var(--t); height: calc((var(--h) - 3 * var(--t)) / 2); }
+.seg-f { right: 0; top: calc((var(--h) + var(--t)) / 2); width: var(--t); height: calc((var(--h) - 3 * var(--t)) / 2); }
+.seg-p { right: calc(-0.55 * var(--t)); bottom: 0; width: calc(var(--t) * 0.85); height: calc(var(--t) * 0.85); border-radius: 50%; }
+.seg-t { right: calc(-0.15 * var(--t)); bottom: calc(-0.5 * var(--t)); width: calc(var(--t) * 0.5); height: calc(var(--t) * 0.95); transform: skewX(22deg); border-radius: calc(var(--u) * 0.02); }
+
+/* Fallback textual: fica escondido quando o visor de segmentos existe. */
+.lcd-fallback {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+}
+
+/* ---------------- Marca ---------------- */
+.brand {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: calc(var(--u) * 0.14);
+  height: calc(var(--u) * 0.36);
+  padding-right: calc(var(--u) * 0.1);
+  color: #c9ccd2;
+}
+.brand-hp {
+  font-weight: 800;
+  font-size: calc(var(--u) * 0.32);
+  letter-spacing: 0.02em;
+}
+.brand-model {
+  font-weight: 600;
+  font-size: calc(var(--u) * 0.26);
+  color: var(--f-color);
+}
+
+/* ---------------- Teclado ---------------- */
+.keyboard {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  gap: calc(var(--u) * 0.14);
+}
+
+.key {
+  position: relative;
+  min-width: 0;   /* impede que rótulos largos estourem a grade */
+  min-height: 0;
+  overflow: hidden;
+  appearance: none;
+  border: none;
+  margin: 0;
+  padding: calc(var(--u) * 0.06) 0 calc(var(--u) * 0.05);
+  border-radius: calc(var(--u) * 0.15);
+  background: linear-gradient(180deg, var(--key-top) 0%, var(--key-bot) 100%);
+  color: var(--key-txt);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--u) * 0.02);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 calc(var(--u) * 0.05) 0 rgba(0, 0, 0, 0.55);
+  transition: transform 0.03s ease, filter 0.03s ease;
+}
+
+.key:active {
+  transform: translateY(calc(var(--u) * 0.04));
+  filter: brightness(1.35);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.lbl-p {
+  font-size: calc(var(--u) * 0.34);
+  font-weight: 600;
+  line-height: 1;
+  max-width: 100%;
+  white-space: nowrap;
+}
+.lbl-f, .lbl-g {
+  font-size: calc(var(--u) * 0.2);
+  line-height: 1;
+  min-height: calc(var(--u) * 0.22);
+  font-weight: 600;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+.lbl-f { color: var(--f-color); order: -1; }
+.lbl-g { color: var(--g-color); }
+
+/* Teclas de prefixo f e g coloridas como na calculadora real. */
+.key-f { background: linear-gradient(180deg, #f2c14e, #d09a1f); }
+.key-f .lbl-p { color: #1a1204; }
+.key-g { background: linear-gradient(180deg, #57c2f0, #2f8fc0); }
+.key-g .lbl-p { color: #04121b; }
+
+.key-enter .lbl-p { writing-mode: vertical-rl; text-orientation: mixed; font-size: calc(var(--u) * 0.26); letter-spacing: 0.05em; }
+
+@media (max-width: 380px) {
+  .lbl-f, .lbl-g { font-size: calc(var(--u) * 0.18); }
+}

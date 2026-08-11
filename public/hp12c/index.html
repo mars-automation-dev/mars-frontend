@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <title>HP-12C</title>
+
+  <meta name="theme-color" content="#1b1d22">
+  <meta name="description" content="Emulador da calculadora financeira HP-12C — PWA instalável e offline.">
+
+  <!-- PWA / iOS -->
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./icons/icon-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="HP-12C">
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="calc" role="application" aria-label="Calculadora HP-12C">
+    <!-- Visor -->
+    <div class="lcd-frame">
+      <div class="annunciators">
+        <span id="begin" class="ann"></span>
+        <span id="modifier" class="ann ann-mod"></span>
+        <span id="dmyc" class="ann"></span>
+        <span id="pgrm" class="ann"></span>
+      </div>
+      <div id="lcd" class="lcd" aria-hidden="true"></div>
+      <!-- Fallback textual exigido pelo contrato do motor -->
+      <div id="display" class="lcd-fallback" aria-live="polite"></div>
+    </div>
+
+    <div class="brand">
+      <span class="brand-hp">hp</span>
+      <span class="brand-model">12C</span>
+    </div>
+
+    <!-- Teclado montado por app.js -->
+    <div id="keyboard" class="keyboard"></div>
+  </main>
+
+  <!-- Armadilha do Init_hp12c(): precisa existir com width/height inline. Oculto. -->
+  <div id="pointer_div" style="width: 450px; height: 282px; display: none;"></div>
+
+  <!-- Motor original (GPL-3.0) com Patch 1 aplicado. Carregado ANTES do app.js. -->
+  <script src="./motor.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
