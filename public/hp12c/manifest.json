@@ -2,7 +2,7 @@
   "name": "HP-12C",
   "short_name": "HP-12C",
   "description": "Emulador da calculadora financeira HP-12C — instalável e offline.",
-  "start_url": "./",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",

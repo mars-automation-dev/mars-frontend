@@ -2,7 +2,7 @@
  * Estratégia: precache na instalação + cache-first. Zero rede após o 1º load.
  * Versione CACHE a cada deploy para invalidar o cache antigo (limpo no activate).
  */
-const CACHE = "hp12c-v1";
+const CACHE = "hp12c-v2";
 
 const ASSETS = [
   "./",
